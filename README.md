@@ -1,6 +1,6 @@
 # Mini projet M2 AIC - Equipe Crédit
 
-L'objectif est de préparer un Data Challenge pour les élèves de Licence.
+L'objectif est de préparer un Data Challenge pour les élèves de Licence. Les thèmes généraux de notre projet sont le crédit, l'analyse financière et l'aide à la décision dans ce contexte.
 
 Ce repository Github réunira :
 
@@ -8,17 +8,11 @@ Ce repository Github réunira :
 - Notre dataset (Sans les solutions).
 - Notre code
 
-Voici des idées de datasets :
+Le dataset que nous avons choisi est disponible à l'adresse suivante :
 
-- https://www.kaggle.com/c/zillow-prize-1
+https://www.kaggle.com/c/GiveMeSomeCredit
 
-- https://www.kaggle.com/c/favorita-grocery-sales-forecasting
+L'objectif du challenge est de classifier des clients demandant un prêt en fonction du risque financier qu'ils représentent.
 
-- https://www.kaggle.com/c/porto-seguro-safe-driver-prediction
+Pour le 05/11 : Faire une proposition de sujet.
 
-- https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research#Financial
-
-- https://archive.ics.uci.edu/ml/index.php
-
-
-Nous sommes pour le moment pour l'utilisation d'un challenge Kaggle.
