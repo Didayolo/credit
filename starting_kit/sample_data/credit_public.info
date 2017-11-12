@@ -1,0 +1,16 @@
+usage = 'Give me some credit dataset'
+name = 'credit'
+task = 'binaryclass.classification'
+target_type = 'Numerical'
+feat_type = 'Numerical'
+metric = 'bac_metric' #?
+time_budget =  1200#?
+feat_num =     10
+target_num =     1
+label_num =     2
+train_num =   75000
+valid_num =    25000
+test_num =    25000
+has_categorical =     0#?
+has_missing =     0#?
+is_sparse =     0#?
