@@ -13,6 +13,3 @@ Le dataset que nous avons choisi est disponible à l'adresse suivante :
 https://www.kaggle.com/c/GiveMeSomeCredit
 
 L'objectif du challenge est de classifier des clients demandant un prêt en fonction du risque financier qu'ils représentent.
-
-Pour le 05/11 : Faire une proposition de sujet.
-
