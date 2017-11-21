@@ -19,7 +19,7 @@ class model:
         '''
         self.num_train_samples=0
         self.num_feat=10
-        self.num_labels=2
+        self.num_labels=1
         self.is_trained=False
         self.clf=AdaBoostClassifier()
 
