@@ -20,6 +20,8 @@ Usage:
     Alternatively, to create a sample result submission run:
 
     python ingestion_program/ingestion.py public_data sample_result_submission ingestion_program sample_code_submission
+	
+	python scoring_program/score.py sample_data sample_result_submission scoring_output
 
     Zip the contents of sample_result_submission (without the directory).
 
