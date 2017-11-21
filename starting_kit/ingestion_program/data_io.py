@@ -64,15 +64,19 @@ def read_as_df(basename, type="train"):
     solution_file = basename + '_' + type + '.solution'
     if isfile(solution_file):
         Y = pd.read_csv(solution_file, sep=' ', names = np.ravel(label_name))
-        [patnum2, classnum] = Y.shape
+        [patnum2, labelnum] = Y.shape
         assert(patnum==patnum2)
-        print('Number of classes = %d' % classnum)
+        print('Number of labels = %d' % labelnum)
         # Here we add the target values as a last column, this is convenient to use seaborn
         # Look at http://seaborn.pydata.org/tutorial/axis_grids.html for other ideas
-        label_range = np.arange(classnum).transpose()         # This is just a column vector [[0], [1], [2]]
-        numerical_target = Y.dot(label_range)                 # This is a column vector of dim patnum with numerical categories
-        nominal_target = pd.Series(np.array(label_name)[numerical_target].ravel()) # Same with nominal categories
-        XY = X.assign(target=nominal_target.values)          # Add the last column
+        if labelnum>1:
+            label_range = np.arange(labelnum).transpose()         # This is just a column vector [[0], [1], [2]]
+            numerical_target = Y.dot(label_range)                 # This is a column vector of dim patnum with numerical categories
+            nominal_target = pd.Series(np.array(label_name)[numerical_target].ravel()) # Same with nominal categories
+            XY = X.assign(target=nominal_target.values)          # Add the last column
+        else:
+            XY = X.assign(target=Y)
+            XY.columns.values[-1]=np.ravel(label_name)[0]
     
     return XY
     
@@ -121,12 +125,12 @@ def vprint(mode, t):
 def write(filename, predictions):
     ''' Write prediction scores in prescribed format'''
     with open(filename, "w") as output_file:
-        for row in predictions:
-            if type(row) is not np.ndarray and type(row) is not list:
-                row = [row]
-            for val in row:
-                output_file.write('{0:g} '.format(float(val)))
-            output_file.write('\n')
+		for row in predictions:
+			if type(row) is not np.ndarray and type(row) is not list:
+				row = [row]
+			for val in row:
+				output_file.write('{0:g} '.format(float(val)))
+			output_file.write('\n')
 
 def zipdir(archivename, basedir):
     '''Zip directory, from J.F. Sebastian http://stackoverflow.com/'''
@@ -159,7 +163,7 @@ def inventory_data(input_dir):
         
 def inventory_data_nodir(input_dir):
     ''' Inventory data, assuming flat directory structure'''
-    training_names = ls(os.path.abspath(os.path.join(input_dir, 'credit_train.data')))
+    training_names = ls(os.path.join(input_dir, '*_train.data'))
     for i in range(0,len(training_names)):
         name = training_names[i]
         training_names[i] = name[-name[::-1].index(filesep):-name[::-1].index('_')-1]
@@ -179,17 +183,17 @@ def check_dataset(dirname, name):
     ''' Check the test and valid files are in the directory, as well as the solution'''
     valid_file = os.path.join(dirname, name + '_valid.data')
     if not os.path.isfile(valid_file):
-        print('No validation file for ' + name)
-        exit(1)  
+		print('No validation file for ' + name)
+		exit(1)  
     test_file = os.path.join(dirname, name + '_test.data')
     if not os.path.isfile(test_file):
-        print('No test file for ' + name)
-        exit(1)
+		print('No test file for ' + name)
+		exit(1)
 	# Check the training labels are there
     training_solution = os.path.join(dirname, name + '_train.solution')
     if not os.path.isfile(training_solution):
-        print('No training labels for ' + name)
-        exit(1)
+		print('No training labels for ' + name)
+		exit(1)
     return True
 
 

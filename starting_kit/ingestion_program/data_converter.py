@@ -89,7 +89,7 @@ def convert_to_num(Ybin, verbose=True):
          return Ybin
 	classid=range(Ybin.shape[1])
 	Ycont = np.dot(Ybin, classid)
-	if verbose: print (Ycont)
+	if verbose: print Ycont
 	return Ycont
  
 def convert_to_bin(Ycont, nval, verbose=True):
