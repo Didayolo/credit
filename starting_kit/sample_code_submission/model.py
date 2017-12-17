@@ -7,9 +7,8 @@ This model contains 4 methods:
 - load: reloads the model.
 '''
 import pickle
-import numpy as np
 from os.path import isfile
-from sklearn.ensemble import AdaBoostClassifier  
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 
 class model:
     def __init__(self):
@@ -21,7 +20,7 @@ class model:
         self.num_feat=10
         self.num_labels=1
         self.is_trained=False
-        self.clf=AdaBoostClassifier()
+        self.clf=QuadraticDiscriminantAnalysis()
 
 
     def fit(self, X, y):
