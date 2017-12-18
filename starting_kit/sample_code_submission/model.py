@@ -17,7 +17,7 @@ class model:
         Use triple quotes for function documentation. 
         '''
         self.num_train_samples=0
-        self.num_feat=54
+        self.num_feat=56
         self.num_labels=1
         self.is_trained=False
         self.clf=QuadraticDiscriminantAnalysis()
