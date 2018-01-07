@@ -35,8 +35,7 @@ y_train = upsampled[:,-1]
 classifiers_dict = {
     "GradientBoostingClassifier" : GradientBoostingClassifier(),
     "Perceptron (Neural Net)" : MLPClassifier(),
-    "AdaBoost" : AdaBoostClassifier(),
-    "RandomForestClassifier": RandomForestClassifier()}
+    "AdaBoost" : AdaBoostClassifier()}
 
 w = []
 for name in classifiers_dict: #zip(names, classifiers):
