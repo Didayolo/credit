@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 from sklearn.utils import resample
 from sklearn.ensemble import GradientBoostingClassifier
+from xgboost import XGBClassifier
 
 #load data
 X_train = np.loadtxt('./data/credit_train.data', delimiter = ' ')
@@ -25,7 +26,7 @@ X_train = upsampled[:,:-1]
 y_train = upsampled[:,-1]
 
 # classifier
-clf =  GradientBoostingClassifier()
+clf =  XGBClassifier()
 clf.fit(X_train, y_train)
 val_score = roc_auc_score(y_val , clf.predict(X_val))
 test_score = roc_auc_score(y_test , clf.predict(X_test))
